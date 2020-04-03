@@ -1,0 +1,20 @@
+﻿html {
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    line-height: 60px;
+    width: 100%;
+}
+
+video {
+    width: 50%;
+}

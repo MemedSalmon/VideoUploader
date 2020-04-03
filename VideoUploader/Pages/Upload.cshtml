@@ -1,0 +1,17 @@
+﻿@page
+@model VideoUploader.Pages.UploadModel
+@{
+    ViewData["Title"] = "Upload";
+}
+
+<div class="container text-center">
+    <video controls>
+        <source src="~/videos/CJAY.mp4" type="video/mp4" />
+        <small class="text-warning">WARNING: Your browser doesn't support video.</small>
+    </video>
+</div>
+
+<div class="container text-center mt-3">
+    <div><i class="fa fa-upload fa-3x"></i></div>
+    <div><button class="btn btn-dark">Upload</button></div>
+</div>
