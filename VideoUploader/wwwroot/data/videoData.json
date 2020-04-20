@@ -1,3 +1,18 @@
+[
 {
-
+  "Id": "PdZVPA8ipn5y2MeBb7we",
+  "Title": "Test",
+  "VideoPath": "videos/PdZVPA8ipn5y2MeBb7we.mp4",
+  "Extension": "video/mp4",
+  "ImagePath": "thumbnails/PdZVPA8ipn5y2MeBb7we.png",
+  "Description": "Test"
+},
+{
+  "Id": "QbdxoAXFcWQ7TMfMNfij",
+  "Title": null,
+  "VideoPath": "videos/QbdxoAXFcWQ7TMfMNfij.mp4",
+  "Extension": "video/mp4",
+  "ImagePath": "thumbnails/QbdxoAXFcWQ7TMfMNfij.png",
+  "Description": null
 }
+]

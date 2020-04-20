@@ -1,4 +1,47 @@
 ﻿@page
-@model VideoUploader.Pages.VideosModel
+@using VideoUploader.Models; 
+@model VideosModel
 @{
+    ViewData["Title"] = "Videos";
 }
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 mb-5">
+    @foreach (VideoData video in Model.Videos)
+    {
+         <div class="col">
+            <div class="card m-2 mt-0 border-0 card-shadow">
+                <div class="card-header">
+                    <h5 class="h5 text-light">@video.Title</h5>
+                </div>
+
+                <div class="card-img" style="background-image: url('@video.ImagePath');"></div>
+
+                <div class="card-footer">
+                    <form method="post" enctype="multipart/form-data" asp-controller="Video" asp-action="Watch">
+                        <input class="d-none" type="text" name="videoId" value="@video.Id" />
+                        <button class="btn btn-dark float-left" type="submit">Watch</button>
+                    </form>
+
+                    <form method="post" enctype="multipart/form-data" asp-controller="Video" asp-action="Delete">
+                        <input class="d-none" type="text" name="videoId" value="@video.Id" />
+                        <button class="btn btn-danger float-right" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    
+
+   
+
+</div>
+
+
+
+
+
+
+
+
+
+

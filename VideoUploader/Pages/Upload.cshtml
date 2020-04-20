@@ -1,17 +1,73 @@
 ﻿@page
-@model VideoUploader.Pages.UploadModel
+@model UploadModel
 @{
     ViewData["Title"] = "Upload";
+    
 }
 
-<div class="container text-center">
-    <video controls>
-        <source src="~/videos/CJAY.mp4" type="video/mp4" />
-        <small class="text-warning">WARNING: Your browser doesn't support video.</small>
-    </video>
+<div class="jumbotron">
+    <form method="post" enctype="multipart/form-data" asp-controller="Video" asp-action="Upload">
+
+        <div class="row row-cols-1 mb-1">
+            <div class="col"><h3 class="h3 float-left text-light">Title:</h3></div>
+            <div class="col input-group mb-3">
+                <input class="form-control text-light border-info border-0 card-shadow" placeholder="Title..." type="text" name="title" />
+            </div>
+        </div>
+
+        <div class="row row-cols-1 mb-3">
+            <div class="col"><h5 class="h5 float-left text-light">Description:</h5></div>
+            <div class="col input-group mb-3">
+                <input class="d-none" type="text" name="description" id="description" />
+                <textarea class="form-control text-light border-0 card-shadow" placeholder="Description..." id="textArea" oninput="ConvertText()"></textarea>
+            </div>
+
+            <script type="text/javascript">
+                function ConvertText() {
+                    document.getElementById("description").value = document.getElementById("textArea").value;
+                }
+
+            </script>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 mb-5">
+
+            <div class="col text-center mb-3 mb-sm-0">
+                <input class="d-none" accept="video/*" type="file" name="videoFile" id="videoFile" oninput="OnChange('videoFile', 'videoFilePath')" />
+                <div class="m-3">
+                    <label class="file-input" for="videoFile" data-toggle="tooltip" data-placement="top" title="Video">
+                        <i class="fa fa-film fa-3x"></i>
+                    </label>
+                </div>
+                <small class="text-light" id="videoFilePath"></small>
+            </div>
+
+            <div class="col text-center">
+                <input class="d-none" accept="image/*" type="file" name="thumbnailFile" id="thumbnailFile" oninput="OnChange('thumbnailFile', 'thumbnailFilePath')" />
+                <div class="m-3">
+                    <label class="file-input" for="thumbnailFile" data-toggle="tooltip" data-placement="top" title="Thumbnail">
+                        <i class="fa fa-image fa-3x"></i>
+                    </label>
+                </div>
+                <small class="text-light" id="thumbnailFilePath" ></small>
+            </div>   
+
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2">
+            <div class="col p-0"><button class="btn btn-dark position-relative rounded-0 w-100" type="submit">Upload</button></div>
+            <div class="col p-0"><button class="btn btn-danger position-relative rounded-0 w-100" type="reset" onclick="OnReset()">Reset</button></div>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        function OnChange(file, filePath) {
+            document.getElementById(filePath).textContent = (document.getElementById(file).value).replace(/^.*[\\\/]/, '');
+        }
+
+        function OnReset() {
+            document.getElementById("videoFilePath").textContent = null;
+            document.getElementById("thumbnailFilePath").textContent = null;
+        }
+    </script>
 </div>
 
-<div class="container text-center mt-3">
-    <div><i class="fa fa-upload fa-3x"></i></div>
-    <div><button class="btn btn-dark">Upload</button></div>
-</div>

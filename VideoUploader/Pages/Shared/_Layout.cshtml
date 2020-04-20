@@ -10,27 +10,81 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-navbar border-bottom box-shadow mb-3">
+    <header class="header">
+        <nav class="navbar navbar-expand-sm mb-3">
             <div class="container">
-                <div class="navbar-brand">VideoUploader</div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Videos">Videos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Upload">Upload</a>
-                        </li>
-                    </ul>
+                <div class="navbar-brand"><a class="nav-link text-light" asp-area="" asp-page="/Index">VideoUploader</a></div>
+
+                <div>
+                    <button class="navbar-toggler p-2" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-bars fa-lg"></i>
+                    </button>
                 </div>
+
+                <div class="collapse navbar-collapse">
+
+                    <div class="un-collapsed input-group card-shadow">
+                        <div class="input-group-append"><button class="btn btn-dark"><i class="fa fa-search fa-lg"></i></button></div>
+
+                        <input class="form-control border-0" type="text" placeholder="Search..." />
+
+                        <div class="input-group-prepend-">
+                            <div class="drop">
+                                <div class="dropbtn"><i class="fa fa-bars fa-lg"></i></div>
+
+                                <ul class="drop-content">
+
+                                    <li class="droplink" data-toggle="tooltip" data-placement="right" title="Videos">
+                                        <a class="nav-link text-light" asp-area="" asp-page="/Videos">
+                                            <i class="fa fa-play fa-lg"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="droplink" data-toggle="tooltip" data-placement="right" title="Upload">
+                                        <a class="nav-link text-light" asp-area="" asp-page="/Upload">
+                                            <i class="fa fa-upload fa-lg"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapsed">
+                        <div class="input-group mb-3 card-shadow">
+                            <div class="input-group-append"><button class="btn btn-dark"><i class="fa fa-search fa-lg"></i></button></div>
+
+                            <input class="form-control border-0" type="text" placeholder="Search..." />
+
+
+                        </div>
+
+                        <div class="text-center">
+                            <ul class="list-unstyled">
+
+                                <li class="droplink mb-3 card-shadow">
+                                    <a class="nav-link text-light text-left" asp-area="" asp-page="/Videos">
+                                        <div class="row row-cols-2">
+                                            <div class="col-1"><i class="fa fa-play fa-lg"></i></div>
+                                            <div class="col-11"><span class="pl-2">Videos</span></div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="droplink card-shadow rounded-bottom">
+                                    <a class="nav-link text-light text-left" asp-area="" asp-page="/Upload">
+                                        <div class="row row-cols-2">
+                                            <div class="col-1"><i class="fa fa-upload fa-lg"></i></div>
+                                            <div class="col-11"><span class="pl-2">Upload</span></div>
+                                        </div>
+                                        
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </header>
@@ -41,7 +95,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-light">
         <div class="container">
             &copy; 2020 - VideoUploader - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
@@ -50,6 +104,11 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $("[data-toggle='tooltip']").tooltip();
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

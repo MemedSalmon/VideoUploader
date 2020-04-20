@@ -1,0 +1,25 @@
+﻿@page
+@model VideoUploader.Pages.WatchModel
+@{
+    ViewData["Title"] = Model.Video.Title;
+}
+
+<div class="row row-cols-1">
+
+    <div class="col p-3 p-sm-0 pt-sm-3 pb-sm-3 border-top">
+        <h1 class="text-light m-0">@Model.Video.Title</h1>
+    </div>
+
+    <div class="col p-0">
+        <video controls autoplay>
+            <source src="@Model.Video.VideoPath" type="@Model.Video.Extension" />
+        </video>
+    </div>
+
+    <div class="col p-3 p-sm-0 pt-sm-3 pb-sm-3 border-bottom">
+        <h5 class="text-light m-0">@Model.Video.Description</h5>
+    </div>
+</div>
+
+
+
